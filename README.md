@@ -1,5 +1,7 @@
 # capacitor-meta-audience
 
+# ⛔ The Plugin is under development ⛔
+
 meta audience for capacitor
 
 ## Install
