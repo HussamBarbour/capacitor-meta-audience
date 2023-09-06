@@ -1,39 +1,78 @@
 # capacitor-meta-audience
 
-# ⛔ The Plugin is under development ⛔
+⛔ The Plugin is under development ⛔
 
-meta audience for capacitor
+Meta Audience integration for Capacitor apps.
 
-## Install
+## Installation
 
-```bash
+```
 npm install capacitor-meta-audience
 npx cap sync
 ```
 
 ## API
 
-<docgen-index>
+- `showBanner(...)`
+- `hideBanner(...)`
+- `resumeBanner(...)`
+- `removeBanner(...)`
+- `showInterstitial(...)`
 
-* [`echo(...)`](#echo)
+### `showBanner(...)`
 
-</docgen-index>
-
-<docgen-api>
-<!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
-
-### echo(...)
+Display a banner ad in your app.
 
 ```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
+showBanner(options: AdOptions) => Promise<void>
 ```
 
 | Param         | Type                            |
 | ------------- | ------------------------------- |
-| **`options`** | <code>{ value: string; }</code> |
+| **`options`** | `{ placementId: string; }` |
 
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+**Returns:** `Promise<void>`
 
---------------------
+### `hideBanner(...)`
 
-</docgen-api>
+Hide a currently displayed banner ad without removing it.
+
+```typescript
+hideBanner() => Promise<void>
+```
+
+**Returns:** `Promise<void>`
+
+### `resumeBanner(...)`
+
+Resume or show a previously hidden banner ad.
+
+```typescript
+resumeBanner() => Promise<void>
+```
+
+**Returns:** `Promise<void>`
+
+### `removeBanner(...)`
+
+Completely remove the banner ad from the view.
+
+```typescript
+removeBanner() => Promise<void>
+```
+
+**Returns:** `Promise<void>`
+
+### `showInterstitial(...)`
+
+Display an interstitial ad in your app.
+
+```typescript
+showInterstitial(options: AdOptions) => Promise<void>
+```
+
+| Param         | Type                            |
+| ------------- | ------------------------------- |
+| **`options`** | `{ placementId: string; }` |
+
+**Returns:** `Promise<void>`
