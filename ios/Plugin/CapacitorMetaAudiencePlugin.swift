@@ -13,20 +13,34 @@ public class CapacitorMetaAudiencePlugin: CAPPlugin, FBInterstitialAdDelegate,FB
     var currentCall: CAPPluginCall?
     var interstitialAd: FBInterstitialAd?
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
-        call.resolve([
-            "value": implementation.echo(value)
-        ])
-    }
     
     @objc func showBanner(_ call: CAPPluginCall) {
         let placementId = call.getString("placementId") ?? ""
+        let adSize = call.getString("adSize") ?? "BANNER_50"
+
+        var bannerSize: FBAdSize = kFBAdSizeHeight50Banner
+        var adHeight: CGFloat = 50
+        switch adSize {
+            case "BANNER_50":
+                bannerSize = kFBAdSizeHeight50Banner
+                adHeight = 50
+            break
+            case "BANNER_90":
+                bannerSize = kFBAdSizeHeight90Banner
+                adHeight = 90
+            break
+            case "RECTANGLE_HEIGHT_250":
+                bannerSize = kFBAdSizeHeight250Rectangle
+                adHeight = 250
+            break
+        default:
+            break
+        }
         currentCall = call
 
         DispatchQueue.main.async {
             // Instantiate an AdView object.
-            self.adView = FBAdView(placementID: placementId, adSize: kFBAdSizeHeight50Banner, rootViewController: self.bridge?.viewController)
+            self.adView = FBAdView(placementID: placementId, adSize: bannerSize, rootViewController: self.bridge?.viewController)
 
             // Get screen width
             let screenWidth = UIScreen.main.bounds.size.width
@@ -38,10 +52,10 @@ public class CapacitorMetaAudiencePlugin: CAPPlugin, FBInterstitialAdDelegate,FB
 
             // Calculate y-position to place the ad at the bottom, respecting the safe area
             let safeAreaBottomInset = rootViewController.view.safeAreaInsets.bottom
-            let adHeight: CGFloat = 50  // For kFBAdSizeHeight50Banner
             let yPos = UIScreen.main.bounds.size.height - adHeight - safeAreaBottomInset
 
             self.adView?.frame = CGRect(x: 0, y: yPos, width: screenWidth, height: adHeight)
+            
             self.adView?.delegate = self
             self.adView?.loadAd()
 

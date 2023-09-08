@@ -1,17 +1,12 @@
 import { WebPlugin } from '@capacitor/core';
 
 import type { CapacitorMetaAudiencePlugin } from './definitions';
-import { AdOptions } from './shared';
+import type { AdOptions } from './shared';
 
 export class CapacitorMetaAudienceWeb
   extends WebPlugin
   implements CapacitorMetaAudiencePlugin
 {
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
-  }
-
   async showBanner(options: AdOptions): Promise<void> {
     console.log('showBanner', options);
   }

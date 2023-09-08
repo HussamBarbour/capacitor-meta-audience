@@ -5,7 +5,11 @@ import type { CapacitorMetaAudiencePlugin } from './definitions';
 const CapacitorMetaAudience = registerPlugin<CapacitorMetaAudiencePlugin>(
   'CapacitorMetaAudience',
   {
-    web: () => import('./web').then(m => new m.CapacitorMetaAudienceWeb()),
+    showBanner: () => import('./web').then(m => new m.CapacitorMetaAudienceWeb()),
+    hideBanner: () => import('./web').then(m => new m.CapacitorMetaAudienceWeb()),
+    resumeBanner: () => import('./web').then(m => new m.CapacitorMetaAudienceWeb()),
+    removeBanner: () => import('./web').then(m => new m.CapacitorMetaAudienceWeb()),
+    showInterstitial: () => import('./web').then(m => new m.CapacitorMetaAudienceWeb()),
   },
 );
 
