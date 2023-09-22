@@ -7,6 +7,10 @@ export class CapacitorMetaAudienceWeb
   extends WebPlugin
   implements CapacitorMetaAudiencePlugin
 {
+  async initialize(): Promise<void> {
+    console.log('initialize');
+  }
+
   async showBanner(options: AdOptions): Promise<void> {
     console.log('showBanner', options);
   }

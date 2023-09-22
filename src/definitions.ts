@@ -5,6 +5,7 @@ import type { AdOptions } from './shared';
 type MetaAudienceDefinitions = BannerDefinitions &
 InterstitialDefinitions;
 export interface CapacitorMetaAudiencePlugin extends MetaAudienceDefinitions {
+  initialize(): Promise<void>;
   showBanner(options: BannerAdOptions): Promise<void>;
   hideBanner(): Promise<void>;
   resumeBanner(): Promise<void>;
