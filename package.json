@@ -1,6 +1,6 @@
 {
   "name": "capacitor-meta-audience",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "meta audience for capacitor",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -74,5 +74,8 @@
     "android": {
       "src": "android"
     }
+  },
+  "dependencies": {
+    "@types/ws": "^8.5.5"
   }
 }
